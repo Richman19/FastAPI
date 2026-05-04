@@ -564,3 +564,57 @@ python -m ensurepip --upgrade
 
 ## Añadiendo **.gitignore**
 
+Si estas usando *Git*, añadir un archivo *.gitignore* para excluir de Git todo el contenidod del directorio .venv.
+
+Como consejo, puedes hacer esto una vez despues de crear el entorno virtual.
+
+```Windows
+echo "*" > .venv/.gitignore
+```
+
+- `echo "*"`: will "print" the text `*` in the terminal (the next part changes that a bit)
+- `>`: anything printed to the terminal by the command to the left of `>` should not be printed but instead written to the file that goes to the right of `>`
+- `.gitignore`: the name of the file where the text should be written
+
+And `*` for Git means "everything". So, it will ignore everything in the `.venv` directory.
+
+That command will create a file `.gitignore` with the content:
+
+*
+
+## Instalando paquetes
+
+Despues de activar el entorno, puedes instalar paquetes en el.
+
+Esto se hace solo una vez cuando se instalan o se actualizan los paquetes que hacen falta para tu proyecto.
+Si se necesita actualizar una version o añadir nuevos paquetes, se debera hacer esto de nuevo una vez.
+
+### Instalar paquetes directamente
+
+Si tienes prisa y no quieres usar un archivo para declarar los requisitos de tu proyecto, puedes instalar los paquetes directamente:
+
+```Windows
+pip install "fastapi[standard]"
+```
+
+### Instalar desde requirements.txt
+
+Si tienes un 'requirements.txt', ahora puedes usarlo para instalar sus paquetes:
+```Windows
+pip install -r requirements.txt
+```
+
+Un archivo requirements.txt con algunos paquetes se veria de la siguiente manera:
+"fastapi[standard]==0.113.0"
+"pydantic==2.8.0"
+
+
+## Desactivar el entorno virtual
+
+Una vez has terminado con tu proyecto, puedes desactivar el entorno virtual:
+```windows
+deactivate
+```
+
+De esta forma, cuando ejecutes Python, no intentará ejecutarlo desde ese entorno virtual con los paquetes instalados en él.
+
